@@ -1,50 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+{% extends "polls/base.html" %}
 
-    <title>My test page</title>
+{% block title %}Question details title{% endblock %}
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <h1>{{ question.question_text }}</h1>
+{% block content %}
+  <h1>{{ question.question_text }}</h1>
 
-    <ul>
-      {% for choice in question.choice_set.all %}
-      <li>
-        {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
-      </li>
-      {% endfor %}
-    </ul>
+  <ul>
+    {% for choice in question.choice_set.all %}
+    <li>
+      {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+    </li>
+    {% endfor %}
+  </ul>
 
-    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+  <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endblock %}

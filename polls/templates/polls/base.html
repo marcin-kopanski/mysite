@@ -1,0 +1,8 @@
+{% extends "mysite/base.html" %}
+
+{% block static_styles %}
+{% load static %} 
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+{% endblock %}
+
+{% block title %}Polls title{% endblock %}
